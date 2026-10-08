@@ -1,0 +1,13 @@
+<!-- Main Dashboard Container -->
+<main class="container my-5">
+@if (invoices()) {
+<app-invoice-table [invoices]="invoices()" title="Invoice Details"></app-invoice-table>
+
+<div class="d-flex justify-content-end mt-3">
+    <button type="button" class="btn btn-success px-4 py-2 fw-semibold shadow-sm d-flex align-items-center gap-2"
+        (click)="exportToExcel()">
+        📊 Export to Excel
+    </button>
+</div>
+}
+</main>

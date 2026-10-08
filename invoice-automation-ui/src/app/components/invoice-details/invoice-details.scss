@@ -1,0 +1,31 @@
+// Styled drag and drop dashboard area
+.upload-zone {
+  border-color: #dee2e6 !important;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:hover, &.drag-over {
+    background-color: #f1f3f5 !important;
+    border-color: var(--bs-primary) !important;
+    
+    .decoration-underline {
+      text-decoration: underline;
+    }
+  }
+
+  &.drag-over {
+    transform: scale(1.01);
+    background-color: rgba(var(--bs-primary-rgb), 0.04) !important;
+    border-style: solid !important;
+  }
+}
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

@@ -1,0 +1,96 @@
+<nav class="navbar navbar-expand-md navbar-light bg-white border-bottom shadow-sm">
+    <div class="container py-1">
+        <!-- Brand Logo -->
+        <a class="navbar-brand fw-bold text-primary fs-4" routerLink="/dashboard">
+            Invoice<span class="text-dark">AI</span>
+        </a>
+
+        <!-- Mobile Navigation Toggle -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#headerNav"
+            aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation Links -->
+        <div class="collapse navbar-collapse justify-content-end" id="headerNav">
+            <ul class="navbar-nav align-items-md-center gap-2 mt-2 mt-md-0">
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" routerLink="/dashboard"
+                        routerLinkActive="active fw-semibold text-primary">
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" routerLink="/invoices"
+                        routerLinkActive="active fw-semibold text-primary">
+                        Invoices
+                    </a>
+                </li>
+                <!-- User Profile Dropdown / Link -->
+                <li class="nav-item ms-md-2">
+                    <a class="nav-link d-inline-flex align-items-center justify-content-center bg-light rounded-circle text-dark p-2"
+                        routerLink="/profile" style="width: 40px; height: 40px;" title="Profile" data-bs-toggle="modal"
+                        data-bs-target="#profileModal">
+                        👤
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- User Profile Modal -->
+<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow rounded-4">
+      
+      <!-- Modal Header -->
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title fw-bold text-dark" id="profileModalLabel">User Profile</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body text-center p-4">
+        <!-- Avatar Circle -->
+        <div class="mx-auto mb-3 d-flex align-items-center justify-content-center bg-primary-subtle text-primary rounded-circle fs-1" 
+             style="width: 80px; height: 80px;">
+          👤
+        </div>
+
+        <h4 class="fw-bold mb-1">Nandakumar Selvaraj</h4>
+        <p class="text-muted small mb-3">selvarajnanda&#64;gmail.com</p>
+        
+        <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 rounded-pill mb-4">
+          Admin Account
+        </span>
+
+        <hr class="my-3 text-muted opacity-25">
+
+        <!-- User Details List -->
+        <div class="text-start fs-6">
+          <div class="d-flex justify-content-between py-2 border-bottom">
+            <span class="text-secondary">Organization</span>
+            <span class="fw-semibold text-dark">S&P Global</span>
+          </div>
+          <div class="d-flex justify-content-between py-2 border-bottom">
+            <span class="text-secondary">Role</span>
+            <span class="fw-semibold text-dark">Tech Lead</span>
+          </div>
+          <div class="d-flex justify-content-between py-2">
+            <span class="text-secondary">Status</span>
+            <span class="fw-semibold text-success">Active</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer border-0 pt-0 d-flex justify-content-center">
+        <button type="button" class="btn btn-secondary btn-sm px-4" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
