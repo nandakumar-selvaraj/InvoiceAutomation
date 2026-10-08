@@ -1,112 +1,284 @@
 # Invoice Automation
 
-An AI-powered full-stack application that automates invoice data extraction from PDF documents and converts unstructured invoice information into structured, manageable data.
+An AI-powered full-stack invoice processing application that extracts structured invoice information from PDF documents, allows users to review the extracted data, stores invoice records in a SQLite database, and exports invoice data to Excel.
 
 ## Overview
 
-Invoice Automation allows users to upload invoice PDFs, automatically extract important invoice information using AI, store the results in a database, manage invoice records, and export the data to Excel.
+Invoice Automation is designed to demonstrate a real-world business automation workflow for processing invoices.
 
-This project demonstrates how AI can be integrated into a real-world business workflow to reduce manual invoice data entry and processing.
+Instead of manually reading invoice PDFs and entering the information into a system, users can upload an invoice PDF and use AI to extract the invoice information automatically.
 
-### What it does
+The application provides:
 
-* Upload invoice PDFs through a web interface
-* Extract invoice information using OpenAI
-* Convert unstructured invoice content into structured data
-* Store invoice records in SQLite
-* View and manage invoices through an Angular dashboard
-* Create, update, and delete invoice records
-* Export invoice data to Excel
+* PDF invoice upload
+* AI-powered invoice data extraction
+* Extracted data review
+* Invoice data persistence using SQLite
+* Invoice management
+* Excel export
+* Angular-based dashboard
+* ASP.NET Core REST API
 
-## Demo
-
-### Invoice Dashboard
-
-<img width="1903" height="937" alt="image" src="https://github.com/user-attachments/assets/fc5e74a3-5032-4c7f-97d1-1f3d85f6f662" />
-
-
-### Invoice Extraction
-
-<img width="1910" height="949" alt="image" src="https://github.com/user-attachments/assets/5211b9db-c5ce-4bd1-86f0-f0a6c79356ea" />
-
-<img width="1564" height="925" alt="image" src="https://github.com/user-attachments/assets/0b2d06a6-77c8-4e02-bb0e-220fe50fcc6a" />
-
-### Excel Export
-
-<img width="1509" height="785" alt="image" src="https://github.com/user-attachments/assets/87a4e00b-033f-4214-97ee-3bcdfe27e5fc" />
-
-<img width="1063" height="857" alt="image" src="https://github.com/user-attachments/assets/e1cf98e1-300d-43d5-a2a5-9ca32139a4fc" />
-
-## How It Works
+## Application Workflow
 
 ```text
 Invoice PDF
      │
      ▼
-Angular Web UI
+Angular Dashboard
      │
      ▼
-ASP.NET Core API
+Extract Invoice
      │
      ▼
-OpenAI Invoice Extraction
+OpenAI-powered extraction
      │
      ▼
-Structured Invoice Data
+Extracted Invoice Details
+     │
+     ├── Review invoice information
+     │
+     └── Review line items
+     │
+     ▼
+Save
      │
      ▼
 SQLite Database
      │
-     ├── View / Manage
+     ▼
+Invoices Page
      │
-     └── Export to Excel
+     ▼
+Export to Excel
 ```
 
-## Extracted Invoice Fields
+# Pages & Functionality
 
-The application extracts structured information including:
+## 1. Dashboard
+
+The Dashboard is used to upload and process invoice PDFs.
+
+### Upload and Extract Invoice
+
+Users can select an invoice PDF using the **Browse** button.
+
+After selecting the PDF, clicking the **Extract Invoice** button sends the invoice to the backend API for AI-powered extraction.
+
+The application extracts structured information from the invoice.
+
+### Extracted Invoice Details
+
+The extracted invoice information is displayed in a table.
+
+The table contains the following invoice-level fields:
+
+| Field          | Description                          |
+| -------------- | ------------------------------------ |
+| Invoice Number | Unique invoice number                |
+| Customer       | Customer name                        |
+| Invoice Date   | Invoice date                         |
+| Currency       | Invoice currency                     |
+| Subtotal       | Invoice subtotal                     |
+| Tax            | Tax amount                           |
+| Total          | Total invoice amount                 |
+| Items          | Number/details of invoice line items |
+
+Each invoice row contains an **expand (+)** option.
+
+Clicking the expand button displays the individual invoice line items.
+
+### Invoice Items
+
+The expanded section displays the following information for each invoice item:
+
+| Field       | Description                    |
+| ----------- | ------------------------------ |
+| Description | Product or service description |
+| Quantity    | Quantity of the item           |
+| Unit Price  | Price per unit                 |
+| Amount      | Total amount for the item      |
+
+This allows users to review the complete invoice information before saving it.
+
+### Save Invoice
+
+After reviewing the extracted information, users can click the **Save** button.
+
+The extracted invoice information is then sent to the backend API and stored in the **SQLite database**.
+
+The saved data includes:
+
+* Invoice information
+* Invoice line items
+* Quantity
+* Unit price
+* Amount
+* Subtotal
+* Tax
+* Total
+
+---
+
+## 2. Invoices
+
+The **Invoices** page displays invoice records that have already been saved in the SQLite database.
+
+### Invoice List
+
+All saved invoice records are retrieved from the backend API and displayed in a table.
+
+The table contains:
+
+| Field          | Description          |
+| -------------- | -------------------- |
+| Invoice Number | Invoice number       |
+| Customer       | Customer name        |
+| Invoice Date   | Invoice date         |
+| Currency       | Invoice currency     |
+| Subtotal       | Invoice subtotal     |
+| Tax            | Tax amount           |
+| Total          | Total invoice amount |
+| Items          | Invoice line items   |
+
+Each invoice row contains an **expand (+)** option.
+
+Clicking the expand button displays the invoice's line items:
+
+| Field       | Description                    |
+| ----------- | ------------------------------ |
+| Description | Product or service description |
+| Quantity    | Quantity                       |
+| Unit Price  | Unit price                     |
+| Amount      | Line item amount               |
+
+### Export to Excel
+
+The **Export to Excel** button allows users to export the invoice records into an Excel file.
+
+This provides a convenient way to use the processed invoice information for:
+
+* Reporting
+* Accounting
+* Data analysis
+* Further business processing
+
+# Features
+
+## AI-Powered Invoice Extraction
+
+Automatically extracts structured invoice information from PDF documents using an OpenAI-powered extraction service.
+
+## Invoice Data Extraction
+
+The application extracts:
 
 * Invoice Number
 * Customer Name
 * Invoice Date
 * Currency
 * Line Items
-
-  * Description
-  * Quantity
-  * Unit Price
-  * Amount
+* Quantity
+* Unit Price
+* Amount
 * Subtotal
 * Tax
 * Total
 
-## Features
+## Invoice Review
 
-### AI-Powered Invoice Extraction
+Users can review the extracted invoice information and individual line items before saving the invoice.
 
-Upload a PDF invoice and automatically extract structured invoice information using an OpenAI-powered service.
+## SQLite Database
 
-### Invoice Management
+Extracted invoice information is persisted in a **SQLite database**.
 
-The application supports standard CRUD operations for invoice records:
+Entity Framework Core is used for database access and migrations.
+
+## Invoice Management
+
+The backend provides APIs for managing invoice records, including:
 
 * Create invoice
-* View invoices
+* Retrieve invoices
+* Retrieve a specific invoice
 * Update invoice
 * Delete invoice
-* Bulk create invoices
+* Bulk invoice creation
+
+## Excel Export
+
+Saved invoice information can be exported to an Excel file for further processing and reporting.
+
+## Interactive Invoice Tables
+
+Invoice-level information is displayed in expandable rows, allowing users to view line-item details without making the main table unnecessarily large.
+
+# Screenshots
+
+Add screenshots of the application here.
+
+### Dashboard
+
+*Add Dashboard screenshot here.*
+
+### Invoice Extraction
+
+*Add screenshot showing the invoice PDF selected and extracted information.*
+
+### Expanded Invoice Items
+
+*Add screenshot showing the expanded invoice line items.*
+
+### Invoices Page
+
+*Add screenshot showing saved invoices retrieved from SQLite.*
 
 ### Excel Export
 
-Export invoice records into an Excel file for further processing, reporting, or accounting workflows.
+*Add screenshot or sample of the exported Excel file.*
 
-### Web Dashboard
+# Architecture
 
-A modern Angular-based interface provides an easy way to upload, view, and manage invoice information.
+```text
+┌──────────────────────────────┐
+│        Angular 22 UI         │
+│                              │
+│  Dashboard                   │
+│  Invoice Extraction          │
+│  Invoice Management          │
+│  Excel Export                │
+└──────────────┬───────────────┘
+               │
+               │ HTTP / REST API
+               ▼
+┌──────────────────────────────┐
+│     ASP.NET Core 8 API       │
+│                              │
+│ Controllers                  │
+│ Services                     │
+│ Repositories                 │
+│ Models                       │
+└──────────────┬───────────────┘
+               │
+       ┌───────┴────────┐
+       │                │
+       ▼                ▼
+┌─────────────┐  ┌──────────────────┐
+│   OpenAI    │  │ Entity Framework │
+│             │  │      Core        │
+│ AI Invoice  │  └────────┬─────────┘
+│ Extraction  │           │
+└─────────────┘           ▼
+                    ┌──────────────┐
+                    │    SQLite    │
+                    │   Database   │
+                    └──────────────┘
+```
 
-## Tech Stack
+# Tech Stack
 
-### Backend
+## Backend
 
 * ASP.NET Core 8
 * C#
@@ -115,14 +287,20 @@ A modern Angular-based interface provides an easy way to upload, view, and manag
 * OpenAI .NET SDK
 * Swagger / OpenAPI
 
-### Frontend
+## Frontend
 
 * Angular 22
 * TypeScript
 * Bootstrap 5
 * RxJS
 
-## Repository Structure
+## Data & Export
+
+* SQLite
+* Entity Framework Core
+* Excel export
+
+# Repository Structure
 
 ```text
 InvoiceAutomation/
@@ -145,41 +323,61 @@ InvoiceAutomation/
 └── README.md
 ```
 
-## Prerequisites
+# Prerequisites
 
-Before running the application, make sure you have:
+Before running the application, make sure the following are installed:
 
 * .NET 8 SDK
 * Node.js 18+ and npm
-* OpenAI API key
+* An OpenAI API key
 
-## Configuration
+# Configuration
 
 The backend uses .NET User Secrets to securely store the OpenAI API key.
-
-Initialize User Secrets:
-
-```bash
-cd invoice-automation-api
-
-dotnet user-secrets init
-
-dotnet user-secrets set "OpenAI:ApiKey" "<your-openai-api-key>"
-
-dotnet user-secrets set "OpenAI:Model" "<your-openai-model>"
-```
-
-**Do not commit your OpenAI API key to GitHub.**
-
-## Running the API
 
 Navigate to the API project:
 
 ```bash
 cd invoice-automation-api
+```
 
+Initialize User Secrets:
+
+```bash
+dotnet user-secrets init
+```
+
+Configure the OpenAI API key:
+
+```bash
+dotnet user-secrets set "OpenAI:ApiKey" "<your-openai-api-key>"
+```
+
+Configure the OpenAI model:
+
+```bash
+dotnet user-secrets set "OpenAI:Model" "<your-openai-model>"
+```
+
+**Important:** Never commit your OpenAI API key to GitHub.
+
+# Running the Backend API
+
+Navigate to the API project:
+
+```bash
+cd invoice-automation-api
+```
+
+Restore the required packages:
+
+```bash
 dotnet restore
+```
 
+Run the API:
+
+```bash
 dotnet run
 ```
 
@@ -189,83 +387,178 @@ Swagger will be available at:
 http://localhost:5121/swagger
 ```
 
-## Running the Frontend
+# Running the Angular Frontend
 
-Open a second terminal:
+Open a second terminal and navigate to the UI project:
 
 ```bash
 cd invoice-automation-ui
+```
 
+Install the required npm packages:
+
+```bash
 npm install
+```
 
+Start the Angular application:
+
+```bash
 npm start
 ```
 
-The Angular application will be available at:
+The application will be available at:
 
 ```text
 http://localhost:4200
 ```
 
-## API Endpoints
+# API Endpoints
 
-| Method | Endpoint                        | Description                         |
-| ------ | ------------------------------- | ----------------------------------- |
-| POST   | `/api/Invoices/extract`         | Upload PDF and extract invoice data |
-| POST   | `/api/Invoices`                 | Create an invoice                   |
-| GET    | `/api/Invoices`                 | Get all invoices                    |
-| GET    | `/api/Invoices/{invoiceNumber}` | Get a specific invoice              |
-| PUT    | `/api/Invoices/{invoiceNumber}` | Update an invoice                   |
-| DELETE | `/api/Invoices/{invoiceNumber}` | Delete an invoice                   |
-| POST   | `/api/Invoices/bulk`            | Create multiple invoices            |
-| POST   | `/api/Invoices/export`          | Export invoice data to Excel        |
+The backend exposes the following main endpoints:
 
-## Database
+| Method | Endpoint                        | Description                                |
+| ------ | ------------------------------- | ------------------------------------------ |
+| POST   | `/api/Invoices/extract`         | Upload PDF and extract invoice information |
+| POST   | `/api/Invoices`                 | Create a single invoice                    |
+| GET    | `/api/Invoices`                 | Retrieve all invoices                      |
+| GET    | `/api/Invoices/{invoiceNumber}` | Retrieve a specific invoice                |
+| PUT    | `/api/Invoices/{invoiceNumber}` | Update an invoice                          |
+| DELETE | `/api/Invoices/{invoiceNumber}` | Delete an invoice                          |
+| POST   | `/api/Invoices/bulk`            | Create multiple invoices                   |
+| POST   | `/api/Invoices/export`          | Export invoice data to Excel               |
 
-The application uses SQLite for local data storage.
+# Database
 
-Database file:
+The application uses **SQLite as the database** for storing invoice information.
+
+The database file is:
 
 ```text
 invoice-automation-api/invoices.db
 ```
 
-Entity Framework Core migrations are used to create and update the database schema.
+Entity Framework Core is used as the ORM for database operations.
 
-## Configuration Notes
+Entity Framework Core migrations are used to create and maintain the database schema.
+
+The database stores structured invoice information including:
+
+* Invoice Number
+* Customer
+* Invoice Date
+* Currency
+* Invoice Items
+* Quantity
+* Unit Price
+* Amount
+* Subtotal
+* Tax
+* Total
+
+# Data Model
+
+The application works with two primary data structures.
+
+### InvoiceResponse
+
+```text
+InvoiceResponse
+├── InvoiceNumber
+├── Customer
+├── InvoiceDate
+├── Currency
+├── Subtotal
+├── Tax
+├── Total
+└── Items
+```
+
+### InvoiceItem
+
+```text
+InvoiceItem
+├── Description
+├── Quantity
+├── UnitPrice
+└── Amount
+```
+
+# End-to-End Example
+
+A typical invoice processing workflow looks like this:
+
+### Step 1 — Upload
+
+The user opens the Dashboard and selects an invoice PDF using the **Browse** button.
+
+### Step 2 — Extract
+
+The user clicks **Extract Invoice**.
+
+The PDF is sent to the ASP.NET Core API, where the OpenAI-powered extraction service processes the invoice.
+
+### Step 3 — Review
+
+The extracted invoice information is displayed in the Dashboard.
+
+The user can expand the invoice row to review individual line items.
+
+### Step 4 — Save
+
+The user clicks **Save**.
+
+The invoice and its line items are stored in the SQLite database.
+
+### Step 5 — View
+
+The user navigates to the **Invoices** page.
+
+Saved invoice records are retrieved from SQLite and displayed in the invoice table.
+
+### Step 6 — Export
+
+The user clicks **Export to Excel** to generate an Excel file containing the invoice information.
+
+# Configuration Notes
 
 * The frontend API base URL is configured through the Angular environment configuration.
-* If the API runs on a different port, update the frontend environment configuration accordingly.
-* The project is currently intended for local development and demonstration purposes.
+* If the backend API runs on a different port, update the frontend environment configuration accordingly.
+* SQLite is used for local development and demonstration purposes.
+* The project currently does not include production authentication or authorization.
 
-## Future Improvements
+# Future Improvements
 
-Possible future enhancements include:
+Potential future enhancements include:
 
-* Support for multiple invoice formats
-* Batch PDF processing
+* Batch invoice PDF processing
+* Multiple invoice format support
 * Invoice validation
 * Duplicate invoice detection
-* Cloud database integration
 * Authentication and authorization
+* Cloud database integration
 * Cloud deployment
 * Automated invoice processing workflows
+* Improved extraction validation
+* Support for additional document types
 
-## Purpose
+# Project Purpose
 
-This project was built as a practical demonstration of integrating AI into a business automation workflow using modern web technologies.
+This project was created as a practical demonstration of applying AI to a real-world business automation workflow.
 
-It demonstrates experience with:
+It demonstrates full-stack development skills including:
 
 * AI API integration
-* Document data extraction
+* PDF document processing
+* Structured data extraction
 * REST API development
 * Angular application development
-* Database persistence
+* SQLite database integration
+* Entity Framework Core
 * CRUD operations
-* Excel generation
+* Excel export
 * Full-stack application architecture
 
-## License
+# License
 
-This project is currently unlicensed.
+This project is currently unlicensed unless a specific license file and terms are added.
