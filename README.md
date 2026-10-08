@@ -22,15 +22,20 @@ This project demonstrates how AI can be integrated into a real-world business wo
 
 ### Invoice Dashboard
 
-*Add your application screenshot here.*
+<img width="1903" height="937" alt="image" src="https://github.com/user-attachments/assets/fc5e74a3-5032-4c7f-97d1-1f3d85f6f662" />
+
 
 ### Invoice Extraction
 
-*Add a screenshot showing a PDF being uploaded and the extracted invoice data.*
+<img width="1910" height="949" alt="image" src="https://github.com/user-attachments/assets/5211b9db-c5ce-4bd1-86f0-f0a6c79356ea" />
+
+<img width="1564" height="925" alt="image" src="https://github.com/user-attachments/assets/0b2d06a6-77c8-4e02-bb0e-220fe50fcc6a" />
 
 ### Excel Export
 
-*Add a screenshot of the exported Excel file if available.*
+<img width="1509" height="785" alt="image" src="https://github.com/user-attachments/assets/87a4e00b-033f-4214-97ee-3bcdfe27e5fc" />
+
+<img width="1063" height="857" alt="image" src="https://github.com/user-attachments/assets/e1cf98e1-300d-43d5-a2a5-9ca32139a4fc" />
 
 ## How It Works
 
