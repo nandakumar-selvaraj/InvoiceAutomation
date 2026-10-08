@@ -220,23 +220,28 @@ Add screenshots of the application here.
 
 ### Dashboard
 
-*Add Dashboard screenshot here.*
+<img width="1312" height="506" alt="Screenshot 2026-10-08 193803" src="https://github.com/user-attachments/assets/1e0734d3-6e15-4220-8490-e736082fffcc" />
+
 
 ### Invoice Extraction
 
-*Add screenshot showing the invoice PDF selected and extracted information.*
+<img width="1246" height="575" alt="image" src="https://github.com/user-attachments/assets/4706ac56-1c55-4a08-9dbd-809cbccf0eae" />
+
 
 ### Expanded Invoice Items
 
-*Add screenshot showing the expanded invoice line items.*
+<img width="1234" height="862" alt="image" src="https://github.com/user-attachments/assets/3ccfed61-e953-4cb8-a684-abd104537baa" />
+
 
 ### Invoices Page
 
-*Add screenshot showing saved invoices retrieved from SQLite.*
+<img width="1209" height="762" alt="image" src="https://github.com/user-attachments/assets/6a00c56d-0911-4ac1-9edb-d1fa73592e98" />
+
 
 ### Excel Export
 
-*Add screenshot or sample of the exported Excel file.*
+<img width="1063" height="857" alt="Screenshot 2026-10-08 192128" src="https://github.com/user-attachments/assets/af836c1e-89f8-466a-b61e-30ccd7298021" />
+
 
 # Architecture
 
